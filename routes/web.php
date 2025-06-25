@@ -5,6 +5,8 @@ use App\Livewire\Proyecto\Detalle;
 use App\Livewire\Tarea\Form as TareaForm;
 use App\Livewire\Actividad\Form as ActividadForm;
 use App\Livewire\Usuario\AsignarProyecto;
+use App\Models\User;
+
 
 
 /*
@@ -73,5 +75,10 @@ Route::middleware([
     Route::view('/usuarios', 'usuario.index')->name('usuario.index');
     Route::view('/usuarios/create', 'usuario.create')->name('usuario.create');
     //Route::get('/usuarios/proyectos/{id}', \App\Livewire\Usuario\AsignarProyecto::class)->name('usuario.proyectos');
-    //Route::get('/usuarios/herramientas/{id}', \App\Livewire\Usuario\AsignarHerramienta::class)->name('usuario.herramientas');
+    Route::get('/usuarios/{usuario}/herramientas', function (\App\Models\User $usuario) {
+    return view('usuario.herramientas', compact('usuario'));
+    })->name('usuario.herramientas');
+   Route::get('/usuarios/{usuario}/proyectos', function (User $usuario) {
+    return view('usuario.proyectos', compact('usuario'));
+})->name('usuario.proyectos');
 });

@@ -17,8 +17,10 @@ class Herramienta extends Model
         'password',
     ];
 
-    public function usuarios()
+
+    public function usuarioHerramientas()
     {
-        return $this->belongsToMany(User::class, 'usuario_herramientas', 'id_herramienta', 'user_id');
+    return $this->hasMany(\App\Models\UsuarioHerramienta::class, 'id_herramienta');
     }
+
 }

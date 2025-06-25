@@ -5,28 +5,44 @@ namespace App\Livewire\Usuario;
 use Livewire\Component;
 use App\Models\User;
 use App\Models\Proyecto;
+use App\Models\ProyectoUsuario;
 
 class AsignarProyecto extends Component
 {
     public User $usuario;
-    public $proyectosDisponibles = [];
-    public $proyectosSeleccionados = [];
+    public array $proyectosSeleccionados = [];
 
-    public function mount($id)
-    {
-        $this->usuario = User::findOrFail($id);
-        $this->proyectosDisponibles = Proyecto::all();
-        $this->proyectosSeleccionados = $this->usuario->proyectos->pluck('id_proyecto')->toArray();
-    }
+public function mount(User $usuario)
+{
+    $this->usuario = $usuario;
+    $this->proyectosSeleccionados = \App\Models\ProyectoUsuario::where('user_id', $usuario->id)
+        ->pluck('id_proyecto')
+        ->toArray();
+}
 
-    public function updatedProyectosSeleccionados()
+    public function guardar()
     {
-        $this->usuario->proyectos()->sync($this->proyectosSeleccionados);
+        ProyectoUsuario::where('user_id', $this->usuario->id)->delete();
+
+        $registros = collect($this->proyectosSeleccionados)->map(function ($id) {
+            return [
+                'user_id' => $this->usuario->id,
+                'id_proyecto' => $id,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ];
+        })->toArray();
+
+        ProyectoUsuario::insert($registros);
+
         session()->flash('success', 'Proyectos actualizados correctamente.');
     }
 
-    public function render()
-    {
-        return view('livewire.usuario.asignar-proyecto');
-    }
+public function render()
+{
+    return view('livewire.usuario.asignar-proyecto', [
+        'proyectos' => \App\Models\Proyecto::all(),
+    ]);
+}
+
 }

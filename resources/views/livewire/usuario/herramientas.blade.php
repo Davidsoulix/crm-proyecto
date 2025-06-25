@@ -1,5 +1,5 @@
 <div class="bg-white p-6 rounded shadow max-w-4xl mx-auto">
-    <h2 class="text-2xl font-bold mb-4">Asignar proyectos a {{ $usuario->name }}</h2>
+    <h2 class="text-2xl font-bold mb-4">Herramientas para {{ $usuario->name }}</h2>
 
     @if (session()->has('success'))
         <div class="mb-4 p-2 bg-green-100 text-green-800 rounded">
@@ -9,15 +9,15 @@
 
     <form wire:submit.prevent="guardar" class="space-y-4">
         <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
-            @foreach ($proyectos as $proyecto)
+            @foreach ($herramientas as $herramienta)
                 <label class="flex items-center space-x-2">
                     <input
                         type="checkbox"
-                        value="{{ $proyecto->id_proyecto }}"
-                        wire:model="proyectosSeleccionados"
+                        value="{{ $herramienta->id_herramienta }}"
+                        wire:model="herramientasSeleccionadas"
                         class="text-blue-600 border-gray-300 rounded"
                     >
-                    <span>{{ $proyecto->nombre }}</span>
+                    <span>{{ $herramienta->nombre }}</span>
                 </label>
             @endforeach
         </div>
