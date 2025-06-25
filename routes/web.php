@@ -6,6 +6,8 @@ use App\Livewire\Tarea\Form as TareaForm;
 use App\Livewire\Actividad\Form as ActividadForm;
 use App\Livewire\Usuario\AsignarProyecto;
 use App\Models\User;
+use App\Livewire\Publicacion\Show;
+use App\Models\Publicacion;
 
 
 
@@ -81,4 +83,13 @@ Route::middleware([
    Route::get('/usuarios/{usuario}/proyectos', function (User $usuario) {
     return view('usuario.proyectos', compact('usuario'));
 })->name('usuario.proyectos');
+
+//Publicaciones
+Route::view('/publicacion/create', 'publicacion.create')->name('publicacion.create');
+Route::view('/publicacion', 'publicacion.index')->name('publicacion.index');
+
+Route::get('/publicacion/{publicacion}', function (Publicacion $publicacion) {
+    return view('publicacion.show', compact('publicacion'));
+})->name('publicacion.show');
+
 });
