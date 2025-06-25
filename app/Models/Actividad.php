@@ -15,7 +15,7 @@ class Actividad extends Model
         'descripcion',
     ];
 
-    public function tareas()
+    public function actividadTareas()
     {
         return $this->hasMany(ActividadTarea::class, 'id_actividad');
     }

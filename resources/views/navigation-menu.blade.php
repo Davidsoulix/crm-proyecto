@@ -18,9 +18,32 @@
                     <x-nav-link href="{{ route('tareas.index') }}" :active="request()->routeIs('tareas.*')">
                         {{ __('Tareas') }}
                     </x-nav-link>
-
                     <x-nav-link href="{{ route('actividades.index') }}" :active="request()->routeIs('actividades.*')">
                         {{ __('Actividades') }}
+                    </x-nav-link>
+                    <x-nav-link href="{{ route('sector.index') }}" :active="request()->routeIs('sector.*')">
+                        {{ __('Sector') }}
+                    </x-nav-link>
+                    <x-nav-link href="{{ route('estado.index') }}" :active="request()->routeIs('estado.*')">
+                        {{ __('Estado') }}
+                    </x-nav-link>
+                    <x-nav-link href="{{ route('tipo-cliente.index') }}" :active="request()->routeIs('tipo-cliente.*')">
+                        {{ __('Tipo Cliente') }}
+                    </x-nav-link>
+                    <x-nav-link href="{{ route('herramienta.index') }}" :active="request()->routeIs('herramienta.*')">
+                        {{ __('Herramientas') }}
+                    </x-nav-link>
+                    <x-nav-link href="{{ route('cliente.index') }}" :active="request()->routeIs('cliente.*')">
+                        {{ __('Clientes') }}
+                    </x-nav-link>
+                    <x-nav-link href="{{ route('solicitud.index') }}" :active="request()->routeIs('solicitud.*')">
+                        {{ __('Solicitudes') }}
+                    </x-nav-link>
+                    <x-nav-link href="{{ route('proyecto.index') }}" :active="request()->routeIs('proyecto.*')">
+                        {{ __('Proyectos') }}
+                    </x-nav-link>
+                    <x-nav-link href="{{ route('usuario.index') }}" :active="request()->routeIs('usuario.*')">
+                        {{ __('Usuarios') }}
                     </x-nav-link>
                 </div>
 
