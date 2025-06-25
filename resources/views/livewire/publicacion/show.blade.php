@@ -27,14 +27,14 @@
     </div>
 
     @if ($publicacion->imagen)
-        <div class="mb-4">
-            <strong>Imagen:</strong><br>
-            <img src="{{ asset('storage/' . $publicacion->imagen) }}" class="h-48 mt-2 rounded border">
-        </div>
+    <div class="mb-4">
+        <strong>Imagen:</strong><br>
+        <img src="{{ asset('storage/' . $publicacion->imagen) }}" class="h-48 mt-2 rounded border">
+    </div>
     @endif
 
     <a href="{{ route('publicacion.index') }}"
-       class="inline-block bg-gray-300 hover:bg-gray-400 text-sm px-4 py-2 rounded mt-4">
+        class="inline-block bg-gray-300 hover:bg-gray-400 text-sm px-4 py-2 rounded mt-4">
         Volver al listado
     </a>
 </div>

@@ -8,6 +8,8 @@ use App\Livewire\Usuario\AsignarProyecto;
 use App\Models\User;
 use App\Livewire\Publicacion\Show;
 use App\Models\Publicacion;
+use App\Livewire\EventoCalendario\Index as EventoIndex;
+use App\Livewire\EventoCalendario\Form as EventoForm;
 
 
 
@@ -76,20 +78,21 @@ Route::middleware([
     //Usuarios
     Route::view('/usuarios', 'usuario.index')->name('usuario.index');
     Route::view('/usuarios/create', 'usuario.create')->name('usuario.create');
-    //Route::get('/usuarios/proyectos/{id}', \App\Livewire\Usuario\AsignarProyecto::class)->name('usuario.proyectos');
     Route::get('/usuarios/{usuario}/herramientas', function (\App\Models\User $usuario) {
-    return view('usuario.herramientas', compact('usuario'));
+        return view('usuario.herramientas', compact('usuario'));
     })->name('usuario.herramientas');
-   Route::get('/usuarios/{usuario}/proyectos', function (User $usuario) {
-    return view('usuario.proyectos', compact('usuario'));
-})->name('usuario.proyectos');
+    Route::get('/usuarios/{usuario}/proyectos', function (User $usuario) {
+        return view('usuario.proyectos', compact('usuario'));
+    })->name('usuario.proyectos');
 
-//Publicaciones
-Route::view('/publicacion/create', 'publicacion.create')->name('publicacion.create');
-Route::view('/publicacion', 'publicacion.index')->name('publicacion.index');
+    //Publicaciones
+    Route::view('/publicacion/create', 'publicacion.create')->name('publicacion.create');
+    Route::view('/publicacion', 'publicacion.index')->name('publicacion.index');
+    Route::get('/publicacion/{publicacion}', function (Publicacion $publicacion) {
+        return view('publicacion.show', compact('publicacion'));
+    })->name('publicacion.show');
 
-Route::get('/publicacion/{publicacion}', function (Publicacion $publicacion) {
-    return view('publicacion.show', compact('publicacion'));
-})->name('publicacion.show');
-
+    //Evento calendario
+    Route::view('/eventos', 'evento-calendario.index')->name('evento.index');
+    Route::view('/eventos/create', 'evento-calendario.create')->name('evento.create');
 });
