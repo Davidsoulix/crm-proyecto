@@ -10,7 +10,8 @@ use App\Livewire\Publicacion\Show;
 use App\Models\Publicacion;
 use App\Livewire\EventoCalendario\Index as EventoIndex;
 use App\Livewire\EventoCalendario\Form as EventoForm;
-
+use App\Http\Controllers\ReporteProyectoController;
+use App\Http\Controllers\ReporteClienteController;
 
 
 /*
@@ -95,4 +96,10 @@ Route::middleware([
     //Evento calendario
     Route::view('/eventos', 'evento-calendario.index')->name('evento.index');
     Route::view('/eventos/create', 'evento-calendario.create')->name('evento.create');
+
+    //reportes
+    Route::get('/reportes/proyectos/excel', [ReporteProyectoController::class, 'exportExcel'])->name('reportes.proyectos.excel');
+    Route::get('/reportes/proyectos/pdf', [ReporteProyectoController::class, 'exportPDF'])->name('reportes.proyectos.pdf');
+    Route::get('/reportes/clientes/excel', [ReporteClienteController::class, 'exportExcel'])->name('reportes.clientes.excel');
+    Route::get('/reportes/clientes/pdf', [ReporteClienteController::class, 'exportPDF'])->name('reportes.clientes.pdf');
 });

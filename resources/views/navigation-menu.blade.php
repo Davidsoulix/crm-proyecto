@@ -15,42 +15,102 @@
                     <x-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
-                    <x-nav-link href="{{ route('tareas.index') }}" :active="request()->routeIs('tareas.*')">
-                        {{ __('Tareas') }}
-                    </x-nav-link>
-                    <x-nav-link href="{{ route('actividades.index') }}" :active="request()->routeIs('actividades.*')">
-                        {{ __('Actividades') }}
-                    </x-nav-link>
-                    <x-nav-link href="{{ route('sector.index') }}" :active="request()->routeIs('sector.*')">
-                        {{ __('Sector') }}
-                    </x-nav-link>
-                    <x-nav-link href="{{ route('estado.index') }}" :active="request()->routeIs('estado.*')">
-                        {{ __('Estado') }}
-                    </x-nav-link>
-                    <x-nav-link href="{{ route('tipo-cliente.index') }}" :active="request()->routeIs('tipo-cliente.*')">
-                        {{ __('Tipo Cliente') }}
-                    </x-nav-link>
-                    <x-nav-link href="{{ route('herramienta.index') }}" :active="request()->routeIs('herramienta.*')">
-                        {{ __('Herramientas') }}
-                    </x-nav-link>
-                    <x-nav-link href="{{ route('cliente.index') }}" :active="request()->routeIs('cliente.*')">
-                        {{ __('Clientes') }}
-                    </x-nav-link>
-                    <x-nav-link href="{{ route('solicitud.index') }}" :active="request()->routeIs('solicitud.*')">
-                        {{ __('Solicitudes') }}
-                    </x-nav-link>
-                    <x-nav-link href="{{ route('proyecto.index') }}" :active="request()->routeIs('proyecto.*')">
-                        {{ __('Proyectos') }}
-                    </x-nav-link>
-                    <x-nav-link href="{{ route('usuario.index') }}" :active="request()->routeIs('usuario.*')">
-                        {{ __('Usuarios') }}
-                    </x-nav-link>
-                    <x-nav-link href="{{ route('publicacion.index') }}" :active="request()->routeIs('publicacion.*')">
-                        {{ __('Publicaciones') }}
-                    </x-nav-link>
-                    <x-nav-link href="{{ route('evento.index') }}" :active="request()->routeIs('evento.*')">
-                        {{ __('Calendario') }}
-                    </x-nav-link>
+
+                    <!-- Gestión -->
+                    <div x-data="{ open: false }" class="relative flex items-center pt-1">
+                        <button @click="open = !open"
+                            class="inline-flex items-center px-3 py-2 text-sm font-medium text-gray-600 hover:text-gray-900 transition duration-150 ease-in-out">
+                            Gestión
+                            <svg class="ml-1 h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd"
+                                    d="M5.23 7.21a.75.75 0 011.06.02L10 11.584l3.71-4.354a.75.75 0 111.14.976l-4.25 5a.75.75 0 01-1.14 0l-4.25-5a.75.75 0 01.02-1.06z"
+                                    clip-rule="evenodd" />
+                            </svg>
+                        </button>
+
+                        <div x-show="open" @click.outside="open = false"
+                            class="absolute z-50 mt-2 w-48 bg-white border border-gray-200 rounded shadow-lg"
+                            style="top: 100%; left: 0;">
+                            <a href="{{ route('tareas.index') }}"
+                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Tareas</a>
+                            <a href="{{ route('actividades.index') }}"
+                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Actividades</a>
+                            <a href="{{ route('usuario.index') }}"
+                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Usuarios</a>
+                        </div>
+                    </div>
+
+                    <!-- Catálogos -->
+                    <div x-data="{ open: false }" class="relative flex items-center pt-1">
+                        <button @click="open = !open"
+                            class="inline-flex items-center px-3 py-2 text-sm font-medium text-gray-600 hover:text-gray-900 transition duration-150 ease-in-out">
+                            Catálogos
+                            <svg class="ml-1 h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd"
+                                    d="M5.23 7.21a.75.75 0 011.06.02L10 11.584l3.71-4.354a.75.75 0 111.14.976l-4.25 5a.75.75 0 01-1.14 0l-4.25-5a.75.75 0 01.02-1.06z"
+                                    clip-rule="evenodd" />
+                            </svg>
+                        </button>
+
+                        <div x-show="open" @click.outside="open = false"
+                            class="absolute z-50 mt-2 w-48 bg-white border border-gray-200 rounded shadow-lg"
+                            style="top: 100%; left: 0;">
+                            <a href="{{ route('sector.index') }}"
+                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Sector</a>
+                            <a href="{{ route('estado.index') }}"
+                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Estado</a>
+                            <a href="{{ route('tipo-cliente.index') }}"
+                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Tipo Cliente</a>
+                            <a href="{{ route('herramienta.index') }}"
+                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Herramientas</a>
+                        </div>
+                    </div>
+
+                    <!-- Proyectos -->
+                    <div x-data="{ open: false }" class="relative flex items-center pt-1">
+                        <button @click="open = !open"
+                            class="inline-flex items-center px-3 py-2 text-sm font-medium text-gray-600 hover:text-gray-900 transition duration-150 ease-in-out">
+                            Proyectos
+                            <svg class="ml-1 h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd"
+                                    d="M5.23 7.21a.75.75 0 011.06.02L10 11.584l3.71-4.354a.75.75 0 111.14.976l-4.25 5a.75.75 0 01-1.14 0l-4.25-5a.75.75 0 01.02-1.06z"
+                                    clip-rule="evenodd" />
+                            </svg>
+                        </button>
+
+                        <div x-show="open" @click.outside="open = false"
+                            class="absolute z-50 mt-2 w-48 bg-white border border-gray-200 rounded shadow-lg"
+                            style="top: 100%; left: 0;">
+                            <a href="{{ route('proyecto.index') }}"
+                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Proyectos</a>
+                            <a href="{{ route('publicacion.index') }}"
+                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Publicaciones</a>
+                            <a href="{{ route('evento.index') }}"
+                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Calendario</a>
+                        </div>
+                    </div>
+
+                    <!-- Clientes -->
+                    <div x-data="{ open: false }" class="relative flex items-center pt-1">
+                        <button @click="open = !open"
+                            class="inline-flex items-center px-3 py-2 text-sm font-medium text-gray-600 hover:text-gray-900 transition duration-150 ease-in-out">
+                            Clientes
+                            <svg class="ml-1 h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd"
+                                    d="M5.23 7.21a.75.75 0 011.06.02L10 11.584l3.71-4.354a.75.75 0 111.14.976l-4.25 5a.75.75 0 01-1.14 0l-4.25-5a.75.75 0 01.02-1.06z"
+                                    clip-rule="evenodd" />
+                            </svg>
+                        </button>
+
+                        <div x-show="open" @click.outside="open = false"
+                            class="absolute z-50 mt-2 w-48 bg-white border border-gray-200 rounded shadow-lg"
+                            style="top: 100%; left: 0;">
+                            <a href="{{ route('cliente.index') }}"
+                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Clientes</a>
+                            <a href="{{ route('solicitud.index') }}"
+                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Solicitudes</a>
+                        </div>
+                    </div>
                 </div>
 
             </div>
