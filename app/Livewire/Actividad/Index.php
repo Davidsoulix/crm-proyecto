@@ -10,7 +10,7 @@ class Index extends Component
     public function render()
     {
         return view('livewire.actividad.index', [
-            'actividades' => Actividad::withCount('tareas')->get(),
+            'actividades' => Actividad::withCount('actividadTareas')->get(),
         ]);
     }
 }
