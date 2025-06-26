@@ -74,4 +74,13 @@ class User extends Authenticatable
             ->useLogName('usuario')
             ->setDescriptionForEvent(fn(string $eventName) => "Usuario fue {$eventName}");
     }
+
+    public function usuarioHerramientas()
+    {
+        return $this->hasMany(\App\Models\UsuarioHerramienta::class, 'user_id');
+    }
+    public function proyectoUsuarios()
+    {
+        return $this->hasMany(\App\Models\ProyectoUsuario::class, 'user_id');
+    }
 }

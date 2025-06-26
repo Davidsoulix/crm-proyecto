@@ -1,7 +1,7 @@
 <div class="max-w-4xl mx-auto p-4">
     <div class="flex justify-between items-center mb-4">
         <h2 class="text-xl font-bold">Lista de Tareas</h2>
-        <a href="{{ route('tareas.create') }}" class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">
+        <a href="{{ route('tareas.create') }}" class="px-4 py-2 bg-green-600 text-white rounded hover:bg-blue-700">
             Crear nueva
         </a>
     </div>
